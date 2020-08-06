@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/categoryFragment">
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="by.agd.tfg.ui.view.category.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/toTopicFragment"
+            app:destination="@id/topicFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="by.agd.tfg.ui.view.topic.TopicFragment"
+        android:label="TopicFragment"
+        tools:layout="@layout/fragment_topic">
+        <argument
+            android:name="categoryId"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/toGameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/topicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="by.agd.tfg.ui.view.game.GameFragment"
+        android:label="GameFragment"
+        tools:layout="@layout/fragment_game">
+        <argument
+            android:name="topicId"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+</navigation>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:answer="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.graphics.Color" />
+
+        <variable
+            name="viewModel"
+            type="by.agd.tfg.ui.viewmodels.GameViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.question.text}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.23000002" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:onClick="@{() -> viewModel.next()}"
+            android:visibility="@{viewModel.answered ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@id/buttonContainer"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvQuestion" />
+
+        <LinearLayout
+            android:id="@+id/buttonContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.checkAnswer(0)}"
+                answer:answerId="@{viewModel.answerId}"
+                answer:answered="@{viewModel.answered}"
+                answer:backgroundColor="@{Color.BLUE}"
+                answer:buttonId="@{0}"
+                answer:correctAnswerColor="@{Color.GREEN}"
+                answer:question="@{viewModel.question}"
+                answer:wrongAnswerColor="@{Color.RED}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.checkAnswer(1)}"
+                answer:answerId="@{viewModel.answerId}"
+                answer:answered="@{viewModel.answered}"
+                answer:backgroundColor="@{Color.BLUE}"
+                answer:buttonId="@{1}"
+                answer:correctAnswerColor="@{Color.GREEN}"
+                answer:question="@{viewModel.question}"
+                answer:wrongAnswerColor="@{Color.RED}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.checkAnswer(2)}"
+                answer:answerId="@{viewModel.answerId}"
+                answer:answered="@{viewModel.answered}"
+                answer:backgroundColor="@{Color.BLUE}"
+                answer:buttonId="@{2}"
+                answer:correctAnswerColor="@{Color.GREEN}"
+                answer:question="@{viewModel.question}"
+                answer:wrongAnswerColor="@{Color.RED}" />
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.checkAnswer(3)}"
+                answer:answerId="@{viewModel.answerId}"
+                answer:answered="@{viewModel.answered}"
+                answer:backgroundColor="@{Color.BLUE}"
+                answer:buttonId="@{3}"
+                answer:correctAnswerColor="@{Color.GREEN}"
+                answer:question="@{viewModel.question}"
+                answer:wrongAnswerColor="@{Color.RED}" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
