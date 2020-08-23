@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion 29
@@ -36,7 +37,7 @@ android {
         }
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
         dataBinding true
     }
@@ -101,11 +102,31 @@ dependencies {
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
     kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
-    // Firebase
+    //Firebase Firestore
     def firestore_version = "21.5.0"
-    def storage_version = "19.1.1"
     implementation "com.google.firebase:firebase-firestore-ktx:$firestore_version"
+
+    //Firebase Storage
+    def storage_version = "19.1.1"
     implementation "com.google.firebase:firebase-storage-ktx:$storage_version"
+
+    //Firebase Analytics
+    def analytics_version = "17.5.0"
+    implementation "com.google.firebase:firebase-analytics-ktx:$analytics_version"
+
+    //Firebase Crashlytics
+    def crashlytics_version = "17.2.1"
+    implementation "com.google.firebase:firebase-crashlytics-ktx:$crashlytics_version"
+
+    // Firebase Remote Config
+    def remote_cfg_version = "19.2.0"
+    implementation "com.google.firebase:firebase-config-ktx:$remote_cfg_version"
+
+    // Firebase Admob
+    def admob_version = "19.3.0"
+    implementation "com.google.firebase:firebase-ads:$admob_version"
+
+    //Firebase Coroutine support
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1'
 
     // Room
